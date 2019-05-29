@@ -28,7 +28,12 @@
       <p>{{current.alt}}</p>
       <p><i>#{{current.num}}, drawn on {{current.day}} {{month}} {{current.year}}</i></p>
 
-      <star-rating></star-rating>
+      <star-rating
+              v-bind:increment=".5"
+              active-color="#ff0000"
+              @rating-selected="setRating"></star-rating>
+      <!--<p>{{ratings.total}} / {{ratings.sum}}</p>-->
+      <p>Average Rating: {{ratings.average}}</p>
 
 
       <h3>Add a Comment</h3>
@@ -46,6 +51,7 @@
 
       </div>
     </div>
+    <p>GitHub Repository: <a href="https://github.com/Cbain10/Lab-3---Vue/tree/master/Lab-3-master">Click HERE</a></p>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

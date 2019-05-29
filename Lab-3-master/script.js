@@ -15,7 +15,11 @@ let app = new Vue({
         addedName: '',
         addedComment: '',
         comments: {},
-        ratings: {}
+        ratings: {
+            total: 0,
+            sum: 0,
+            average: 0
+        }
     },
     created() {
         this.xkcd();
@@ -69,15 +73,16 @@ let app = new Vue({
             this.addedComment = '';
         },
         setRating(rating){
-            if (!(this.number in this.ratings))
-                Vue.set(this.ratings, this.number, {
-                    sum: 0,
-                    total: 0
-                });
-            this.ratings[this.number].sum += rating;
-            this.ratings[this.number].total += 1;
-            this.ratings[this.number].sum += rating;
-            this.ratings[this.number].total += 1;
+            // if (!(this.number in this.ratings))
+            //     Vue.set(this.ratings, this.number, {
+            //         sum: 0,
+            //         total: 0
+            //     });
+            // this.ratings[this.number].sum += rating;
+            // this.ratings[this.number].total += 1;
+            this.ratings.total += 1;
+            this.ratings.sum += rating;
+            this.ratings.average = this.ratings.sum / this.ratings.total;
         },
     },
     computed: {
